@@ -1,0 +1,21 @@
+# Connect to the MongoDB instance
+client = MongoClient("mongodb://admin:password@localhost:27017/")
+
+# Select the database and collection
+db = client["pokemon"]
+collection = db["JDG"]
+
+# Function to create a new document
+def create_document(document):
+    collection.insert_one(document)
+    print("Document created successfully.")
+
+#Function to update a document
+def update_document(filter, update):
+    collection.update_one(filter, {"$set": update})
+    print("Document updated successfully.")
+
+# Function to delete a document
+def delete_document(filter):
+    collection.delete_one(filter)
+    print("Document deleted successfully.")
